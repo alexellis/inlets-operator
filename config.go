@@ -58,5 +58,9 @@ func (c InletsProConfig) GetLicenseKey() (string, error) {
 		return strings.TrimSpace(val), nil
 	}
 
+	if dashes := strings.Count(val, "-"); dashes == 4 {
+		return strings.TrimSpace(val), nil
+	}
+
 	return "", fmt.Errorf("inlets license may be invalid")
 }
